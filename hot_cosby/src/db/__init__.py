@@ -28,7 +28,12 @@ class TimestampedRecord(Base):
 class Account(TimestampedRecord):
     __tablename__ = 'accounts'
 
-    # TODO: account ORM model
+    username = Column(String(196), unique=True, nullable=False)
+    last_login = Column(DateTime)
+    active = Column(Boolean, default=False)
+    email = Column(String(196), nullable=True, index=True)
+    credential_file = Column(String(1024), nullable=True)
+
 
 
 class Config(TimestampedRecord):
